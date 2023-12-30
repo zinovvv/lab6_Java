@@ -31,28 +31,10 @@ public class Main {
         tracks1.add(new Track("Сикрет Плейс", "ЛСП", 203, 2023, "поп хип-хоп",0));
         tracks1.add(new Track("Стоп Игра", "ЛСП", 240, 2023, "поп хип-хоп",0));
         album1.setTracks(tracks1);
-        Album album2 = new Album("Дух мира", "Джизус", 2023, 13, new ArrayList<>());
-        ArrayList<Track> tracks2 = new ArrayList<>();
-        // Добавление треков во второй альбом
-        tracks2.add(new Track("Я голоден", "Джизус", 171, 2023, "альтернатива",0));
-        tracks2.add(new Track("Едкий дым", "Джизус", 224, 2023, "альтернатива",0));
-        tracks2.add(new Track("Маньяк", "Джизус", 161, 2023, "альтернатива",0));
-        tracks2.add(new Track("Галактика", "Джизус", 330, 2023, "альтернатива",0));
-        tracks2.add(new Track("Всё забрать", "Джизус", 239, 2023, "альтернатива",0));
-        tracks2.add(new Track("Плавишься", "Джизус", 167, 2023, "альтернатива",0));
-        tracks2.add(new Track("Ждал тебя", "Джизус", 225, 2023, "альтернатива",0));
-        tracks2.add(new Track("Рай или Ад", "Джизус", 258, 2023, "альтернатива",0));
-        tracks2.add(new Track("Spirit of the World", "Джизус", 217, 2023, "альтернатива",0));
-        tracks2.add(new Track("Жвачка", "Джизус", 266, 2023, "альтернатива",0));
-        tracks2.add(new Track("Заповедь", "Джизус", 100, 2023, "альтернатива",0));
-        tracks2.add(new Track("Сигареты и творчество", "Джизус", 155, 2023, "альтернатива",0));
-        tracks2.add(new Track("Каплей дождя", "Джизус", 238, 2023, "альтернатива",0));
-        album2.setTracks(tracks2);
         albumsArray[0] = album1;
-        albumsArray[1] = album2;
         // Создание списка альбомов для плейлиста
         ArrayList<Album> albums = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             // Добавление копий альбомов в список
             albums.add(new Album(albumsArray[i]));
         }
@@ -97,10 +79,6 @@ public class Main {
 
         //Создание плейлиста "Избранное"(Производный класс), в конструкторе вызывается конструктор базового класса
         Favorites favorites = new Favorites("Избранное", 3, 1);
-        ArrayList<Track> tracksFavorites = new ArrayList<>();
-        favorites.setTracks(tracksFavorites);
-        ArrayList<Album> albumsFavorites = new ArrayList<>();
-        favorites.setAlbums(albumsFavorites);
 
         //Перегрузка метода базового класса
         favorites.AddTrack(tracks.get(0));
@@ -109,46 +87,49 @@ public class Main {
         favorites.CallBaseAddTrack(tracks.get(1));
 
         //Вывод
-        favorites.toString();
-
+        System.out.print("Вывод альбома 'Избранное': ");
+        System.out.println(favorites.toString());
         //Демонстрация работы абстрактного класса
         DisplayItem itemAlbum = albumLsp1;
         DisplayItem itemTrack = tracks.get(2);
 
+        System.out.print("Демонстрация работы абстрактного класса: ");
+        System.out.print("\n\nВывод альбома: ");
         itemAlbum.DisplayInfo();
+        System.out.print("\nВывод трека: ");
         itemTrack.DisplayInfo();
 
         //Демонстрация работы интерфейсов
         TrackActions playlistTracks = myPlaylist;
-        TrackActions favoritesTracks = favorites;
-        AlbumActions artistAlbums = myArtist;
 
         Track track = new Track("Лабиринт отражений", "ЛСП", 258, 2015, "рэп",10384752);
         playlistTracks.addTrack(track);
         playlistTracks.deleteTrack();
-
-        favoritesTracks.deleteTrack();
-
-        artistAlbums.deleteAlbum();
+        System.out.print("Вывод плейлиста после добавления трека 'Лабиринт отражений' и удаления трека: ");
+        System.out.println(myPlaylist.toString());
 
         //Демонстрация клонирования
 
         // Мелкое клонирование
         Album shallowCloneAlbum = (Album)albumLsp2.clone();
-
+        System.out.print("Демонстрация мелкого клонирования: \n");
+        albumLsp2.deleteTrack();
+        System.out.print("После удаления трека из клона: ");
+        System.out.println(shallowCloneAlbum.toString());
         // Глубокое клонирование
         Album deepCloneAlbum = albumLsp2.deepClone();
-
+        System.out.print("Демонстрация глубокого клонирования: \n");
         albumLsp2.deleteTrack();
-
-        albumLsp2.toString();
-        albumLsp2.toString();
-
+        System.out.print("После удаления трека из клона: ");
+        System.out.println(shallowCloneAlbum.toString());
         //Демонстрация работы шаблонного класса
+        System.out.print("Демонстрация работы шаблонного класса: ");
         ObjectList<Track> trackList = new ObjectList<>();;
         trackList.addObject(tracks.get(0));
         trackList.addObject(tracks.get(2));
         trackList.displayObjects();
+
+        System.out.print("\n");
 
         ObjectList<Album> albumList = new ObjectList<>();
         albumList.addObject(albumLsp2);

@@ -12,6 +12,8 @@ public class Playlist implements TrackActions,AlbumActions{
         this.title = title;
         this.numTracks = numTracks;
         this.numAlbums = numAlbums;
+        this.tracks = new ArrayList<>();
+        this.albums = new ArrayList<>();
     }
 
     public Playlist(Playlist other){
@@ -64,15 +66,15 @@ public class Playlist implements TrackActions,AlbumActions{
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Информация о плейлисте:\n");
+        stringBuilder.append("\nИнформация о плейлисте:\n");
         stringBuilder.append("Название: ").append(title).append("\n");
-        stringBuilder.append("Кол-во треков").append(numTracks).append("\n");
+        stringBuilder.append("Кол-во треков: ").append(numTracks).append("\n");
         stringBuilder.append("Кол-во альбомов: ").append(numAlbums).append("\n");
-
+        stringBuilder.append("Треки: \n");
         for (Track track : tracks){
             stringBuilder.append(track.toString()).append("\n");
         }
-
+        stringBuilder.append("Альбомы: \n");
         for (Album album : albums) {
             stringBuilder.append(album.toString()).append("\n");
         }

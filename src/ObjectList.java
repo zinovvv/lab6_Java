@@ -4,13 +4,16 @@ import java.util.List;
 public class ObjectList<T> {
     private List<T> objects;
 
+    public ObjectList() {
+        this.objects = new ArrayList<>();
+    }
     public void addObject(T newObject) {
         objects.add(newObject);
     }
 
     public void displayObjects() {
         for (T obj : objects) {
-            obj.toString();
+            System.out.println(obj.toString());
         }
     }
 }

@@ -9,6 +9,7 @@ public class Artist implements AlbumActions{
     public Artist(String name, int numAlbums){
         this.name = name;
         this.numAlbums = numAlbums;
+        this.albums = new ArrayList<>();
     }
 
     public Artist(Artist other){
